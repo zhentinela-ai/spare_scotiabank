@@ -3,6 +3,7 @@ import morgan from "morgan";
 import env_vars from "./config";
 
 // Routes
+import entryRoutes from './routes/entry.routes';
 
 export class App {
   private app: Application;
@@ -24,7 +25,7 @@ export class App {
   }
 
   routes() {
-    // this.app.use();
+    this.app.use("/entry", entryRoutes);
   }
 
   listen() {
