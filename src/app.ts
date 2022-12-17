@@ -1,9 +1,11 @@
 import express, { Application } from "express";
 import morgan from "morgan";
+import cors from "cors";
 import env_vars from "./config";
 
 // Routes
-import entryRoutes from './routes/entry.routes';
+import entryRoutes from "./routes/entry.routes";
+import modelRoutes from "./routes/model.routes";
 
 export class App {
   private app: Application;
@@ -21,11 +23,13 @@ export class App {
 
   middlewares() {
     this.app.use(morgan("dev"));
+    this.app.use(cors());
     this.app.use(express.json());
   }
 
   routes() {
-    this.app.use("/entry", entryRoutes);
+    // this.app.use("/entrys", entryRoutes);
+    this.app.use("/models", modelRoutes);
   }
 
   listen() {
