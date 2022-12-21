@@ -3,19 +3,19 @@ import {
   BaseEntity,
   Column,
   Entity,
-  OneToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Model } from "./Model";
+import { Lot } from "./Lot";
 
 @Entity()
-export class Brand extends BaseEntity {
+export class Operation extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column(stringType, { length: 45, nullable: false })
-  brand!: string;
+  operation!: string;
 
-  @OneToMany(() => Model, (model) => model.brand)
-  models!: Model[];
+  @ManyToOne(() => Lot, (lot) => lot.operation)
+  lots!: Lot[];
 }

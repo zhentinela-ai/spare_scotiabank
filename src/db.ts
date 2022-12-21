@@ -1,10 +1,7 @@
-import { Product } from "./entities/Product";
-import { Brand } from "./entities/Brand";
-import { Model } from "./entities/Model";
 import { DataSource } from "typeorm";
-import env_vars from "./config";
+import env_vars, { entities } from "./config";
 
-const { database, host, password, port, user } = env_vars;
+const { host, password, port, user } = env_vars;
 const username = user;
 
 export const AppDataSource = new DataSource({
@@ -14,7 +11,7 @@ export const AppDataSource = new DataSource({
   password,
   port,
   database: "spare_orm",
-  entities: [Product, Brand, Model],
-  logging: true,
+  entities: entities,
+  // logging: true,
   synchronize: true,
 });

@@ -4,7 +4,7 @@ import cors from "cors";
 import env_vars from "./config";
 
 // Routes
-import entryRoutes from "./routes/entry.routes";
+import lotRoutes from "./routes/lot.routes";
 import modelRoutes from "./routes/model.routes";
 
 export class App {
@@ -28,7 +28,7 @@ export class App {
   }
 
   routes() {
-    // this.app.use("/entrys", entryRoutes);
+    this.app.use("/lots", lotRoutes);
     this.app.use("/models", modelRoutes);
   }
 

@@ -1,3 +1,4 @@
+import { stringType } from "../config";
 import {
   BaseEntity,
   Column,
@@ -7,12 +8,12 @@ import {
 } from "typeorm";
 import { Model } from "./Model";
 
-@Entity({ name: "products" })
+@Entity()
 export class Product extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column(stringType, { length: 45, nullable: false })
   product!: string;
 
   @OneToMany(() => Model, (model) => model.product)

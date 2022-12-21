@@ -1,11 +1,13 @@
 import { Model } from "../entities/Model";
 import { Request, Response } from "express";
+import { Brand } from "../entities/Brand";
 
 export async function getModels(req: Request, res: Response) {
   try {
     const models = await Model.find({
       relations: ["product", "brand"],
     });
+
     return res.json(models);
   } catch (error) {
     if (error instanceof Error) {
@@ -21,7 +23,7 @@ export async function getModel(req: Request, res: Response) {
       where: {
         id: Number(id),
       },
-      relations: ["product", "brand"]
+      relations: ["product", "brand"],
     });
 
     if (!model) return res.status(404).json({ message: "Model not found" });
