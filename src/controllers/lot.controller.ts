@@ -13,3 +13,23 @@ export const getLots = async (req: Request, res: Response) => {
     }
   }
 };
+
+export const getLot = async (req: Request, res: Response) => {
+  try {
+    const { lot } = req.params;
+    const findLot = await Lot.findOne({
+      where: {
+        lot,
+      },
+      relations: ["operation"],
+    });
+
+    if (!findLot) return res.status(404).json({ message: "Lot not found" });
+
+    return res.json(findLot);
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(500).json({ message: error.message });
+    }
+  }
+};

@@ -19,13 +19,13 @@ export class Model extends BaseEntity {
   @Column(stringType, { length: 45, nullable: false })
   model!: string;
 
-  @Column(numberType, { name: "product_id", nullable: false })
+  @Column(numberType, { nullable: false })
   productId!: number;
 
   @ManyToOne(() => Product, (product) => product)
   product!: Product;
 
-  @Column(numberType, { name: "brand_id", nullable: false })
+  @Column(numberType, { nullable: false })
   brandId!: number;
 
   @ManyToOne(() => Brand, (brand) => brand.models)

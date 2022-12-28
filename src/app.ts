@@ -6,11 +6,14 @@ import env_vars from "./config";
 // Routes
 import lotRoutes from "./routes/lot.routes";
 import modelRoutes from "./routes/model.routes";
+import inventoryRoutes from "./routes/inventory.routes";
+import { initialValues } from "./initialValues";
 
 export class App {
   private app: Application;
 
   constructor(private port?: number | string) {
+    initialValues()
     this.app = express();
     this.settings();
     this.middlewares();
@@ -30,6 +33,7 @@ export class App {
   routes() {
     this.app.use("/lots", lotRoutes);
     this.app.use("/models", modelRoutes);
+    this.app.use("/inventory", inventoryRoutes);
   }
 
   listen() {

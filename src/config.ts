@@ -14,7 +14,7 @@ const env_vars = {
   port: Number(process.env.PORT) || 3306,
   user: process.env.USER || "root",
   password: process.env.PASSWORD || "123456",
-  database: process.env.DATABASE || "spare",
+  database: process.env.DATABASE || "spare_orm",
   serverPort: Number(process.env.SERVERPORT) || 3000,
 };
 

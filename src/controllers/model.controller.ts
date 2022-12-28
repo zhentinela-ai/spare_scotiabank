@@ -40,10 +40,14 @@ export async function createModel(req: Request, res: Response) {
   try {
     const { model, productId, brandId } = req.body;
 
-    const model_obj = new Model();
-    model_obj.model = model;
-    model_obj.productId = productId;
-    model_obj.brandId = brandId;
+    const model_obj = Model.create({
+      model,
+      // productId,
+      // brandId
+    });
+    // model_obj.model = model;
+    // model_obj.productId = productId;
+    // model_obj.brandId = brandId;
 
     await model_obj.save();
 

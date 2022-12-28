@@ -14,15 +14,15 @@ export class Inventory extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column(numberType, { nullable: false })
-  lot_id!: number;
+  @Column(numberType, { name: "lot_id" })
+  lotId!: number;
 
   @OneToMany(() => Lot, (lot) => lot.inventory)
-  lots!: Lot;
+  lots!: Lot[];
 
-  @Column(numberType, { nullable: false })
-  output_id!: number;
+  @Column(numberType, { name: "output_id" })
+  outputId!: number;
 
   @OneToMany(() => Output, (output) => output.inventory)
-  outputs!: Output;
+  outputs!: Output[];
 }

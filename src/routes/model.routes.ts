@@ -1,5 +1,7 @@
 import { createModel, getModel, getModels } from "../controllers/model.controller";
-import router from "./index";
+import { Router } from "express";
+
+const router = Router();
 
 router.route("/")
   .get(getModels)
