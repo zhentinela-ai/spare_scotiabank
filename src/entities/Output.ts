@@ -17,8 +17,9 @@ export class Output extends BaseEntity {
   serial!: string;
 
   @Column({
-    type: "timestamp",
-    default: () => "CURRENT_TIMESTAMP",
+    // type: "timestamp",
+    // default: () => "CURRENT_TIMESTAMP",
+    name: "create_time",
     nullable: false,
   })
   create_time!: Date;

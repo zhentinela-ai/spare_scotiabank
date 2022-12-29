@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import env_vars from "./config";
+import bodyParser from "body-parser";
 
 // Routes
 import lotRoutes from "./routes/lot.routes";
@@ -13,7 +14,7 @@ export class App {
   private app: Application;
 
   constructor(private port?: number | string) {
-    initialValues()
+    initialValues();
     this.app = express();
     this.settings();
     this.middlewares();
@@ -28,6 +29,8 @@ export class App {
     this.app.use(morgan("dev"));
     this.app.use(cors());
     this.app.use(express.json());
+    this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(bodyParser.json());
   }
 
   routes() {

@@ -2,6 +2,7 @@ import { numberType, stringType } from "../config";
 import {
   BaseEntity,
   Column,
+  CreateDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
@@ -37,9 +38,8 @@ export class Lot extends BaseEntity {
   @Column(stringType, { length: 45, nullable: false })
   serial!: string;
 
-  @Column({
-    type: "timestamp",
-    default: () => "CURRENT_TIMESTAMP",
+  @CreateDateColumn({
+    name: "create_time",
     nullable: false,
   })
   crate_time!: Date;
