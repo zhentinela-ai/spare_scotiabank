@@ -6,6 +6,7 @@ import { Model } from "./entities/Model";
 import { Product } from "./entities/Product";
 import { Output } from "./entities/Output";
 import { Inventory } from "./entities/Inventory";
+import { Devolution } from "./entities/Devolution";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ export const entities = [
   Operation,
   Output,
   Inventory,
+  Devolution,
 ];
 
 export const stringType = "varchar";

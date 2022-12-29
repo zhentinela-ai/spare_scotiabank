@@ -3,6 +3,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
@@ -30,6 +31,7 @@ export class Output extends BaseEntity {
   @Column(stringType, { length: 8, nullable: false })
   scotia_id!: string;
 
-  @ManyToOne(() => Inventory, (inventory) => inventory.outputs)
+  @ManyToOne(() => Inventory)
+  @JoinColumn({ name: "inventory_id", referencedColumnName: "id" })
   inventory!: Inventory;
 }

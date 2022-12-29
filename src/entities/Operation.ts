@@ -3,7 +3,7 @@ import {
   BaseEntity,
   Column,
   Entity,
-  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Lot } from "./Lot";
@@ -16,6 +16,6 @@ export class Operation extends BaseEntity {
   @Column(stringType, { length: 45, nullable: false })
   operation!: string;
 
-  @ManyToOne(() => Lot, (lot) => lot.operation)
+  @OneToMany(() => Lot, (lot) => lot.operation)
   lots!: Lot[];
 }

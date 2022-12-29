@@ -3,6 +3,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -19,16 +20,18 @@ export class Model extends BaseEntity {
   @Column(stringType, { length: 45, nullable: false })
   model!: string;
 
-  @Column(numberType, { nullable: false })
-  productId!: number;
+  // @Column(numberType, { nullable: false })
+  // productId!: number;
 
-  @ManyToOne(() => Product, (product) => product)
+  @ManyToOne(() => Product)
+  @JoinColumn({ name: "product_id", referencedColumnName: "id" })
   product!: Product;
 
-  @Column(numberType, { nullable: false })
-  brandId!: number;
+  // @Column(numberType, { nullable: false })
+  // brandId!: number;
 
-  @ManyToOne(() => Brand, (brand) => brand.models)
+  @ManyToOne(() => Brand)
+  @JoinColumn({ name: "brand_id", referencedColumnName: "id" })
   brand!: Brand;
 
   @OneToMany(() => Lot, (lot) => lot.models)

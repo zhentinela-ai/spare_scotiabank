@@ -4,6 +4,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -29,10 +30,13 @@ export class Lot extends BaseEntity {
   @Column(numberType, { nullable: false })
   stock!: number;
 
-  @Column(numberType, { name: "operation_id", nullable: false })
-  operationId!: number;
+  // @Column(numberType, { name: "operation_id", nullable: false })
+  // operationId!: number;
 
-  @ManyToOne(() => Operation, (operation) => operation.lots)
+  // @ManyToOne(() => Operation, (operation) => operation.lots)
+  // operation!: Operation;
+  @ManyToOne(() => Operation)
+  @JoinColumn({ name: "operation_id", referencedColumnName: "id" })
   operation!: Operation;
 
   @Column(stringType, { length: 45, nullable: false })
@@ -44,6 +48,11 @@ export class Lot extends BaseEntity {
   })
   crate_time!: Date;
 
-  @ManyToOne(() => Inventory, (inventory) => inventory.lots)
+  // @Column(numberType, { name: "inventory_id", nullable: false })
+  // inventoryId!: number;
+
+  // @ManyToOne(() => Inventory, (inventory) => inventory.lots)
+  @ManyToOne(() => Inventory)
+  @JoinColumn({ name: "inventory_id", referencedColumnName: "id" })
   inventory!: Inventory;
 }
