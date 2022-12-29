@@ -34,16 +34,16 @@ export const initialValues = async (req?: Request, res?: Response) => {
       .execute();
 
     const Models = [
-      { model: "T470s", productId: 1, brandId: 1 },
-      { model: "T480s", productId: 1, brandId: 1 },
-      { model: "T490s", productId: 1, brandId: 1 },
-      { model: "T495s", productId: 1, brandId: 1 },
-      { model: "T14", productId: 1, brandId: 1 },
-      { model: "M700q", productId: 2, brandId: 1 },
-      { model: "2450", productId: 1, brandId: 2 },
-      { model: "Jabra", productId: 5, brandId: 3 },
-      { model: "GETL", productId: 4, brandId: 4 },
-      { model: "Plantronics", productId: 5, brandId: 5 },
+      { model: "T470s", product_id: 1, brand_id: 1 },
+      { model: "T480s", product_id: 1, brand_id: 1 },
+      { model: "T490s", product_id: 1, brand_id: 1 },
+      { model: "T495s", product_id: 1, brand_id: 1 },
+      { model: "T14", product_id: 1, brand_id: 1 },
+      { model: "M700q", product_id: 2, brand_id: 1 },
+      { model: "2450", product_id: 1, brand_id: 2 },
+      { model: "Jabra", product_id: 5, brand_id: 3 },
+      { model: "GETL", product_id: 4, brand_id: 4 },
+      { model: "Plantronics", product_id: 5, brand_id: 5 },
     ];
 
     await AppDataSource.createQueryBuilder()

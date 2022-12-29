@@ -21,6 +21,6 @@ export const AppDataSource = new DataSource({
   type: "sqlite",  
   database: "./src/db/spare.sqlite",
   entities: entities,
-  logging: true,
+  // logging: true,
   synchronize: true,
 });

@@ -20,15 +20,15 @@ export class Model extends BaseEntity {
   @Column(stringType, { length: 45, nullable: false })
   model!: string;
 
-  // @Column(numberType, { nullable: false })
-  // productId!: number;
+  @Column(numberType, { name: "product_id", nullable: false })
+  product_id!: number;
 
   @ManyToOne(() => Product)
   @JoinColumn({ name: "product_id", referencedColumnName: "id" })
   product!: Product;
 
-  // @Column(numberType, { nullable: false })
-  // brandId!: number;
+  @Column(numberType, { name: "brand_id", nullable: false })
+  brand_id!: number;
 
   @ManyToOne(() => Brand)
   @JoinColumn({ name: "brand_id", referencedColumnName: "id" })
