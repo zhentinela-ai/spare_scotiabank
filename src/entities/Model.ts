@@ -34,6 +34,6 @@ export class Model extends BaseEntity {
   @JoinColumn({ name: "brand_id", referencedColumnName: "id" })
   brand!: Brand;
 
-  @OneToMany(() => Lot, (lot) => lot.models)
-  lot!: Lot;
+  @OneToMany(() => Lot, (lot) => lot.model)
+  lots!: Lot[];
 }

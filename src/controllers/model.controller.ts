@@ -1,11 +1,11 @@
 import { Model } from "../entities/Model";
 import { Request, Response } from "express";
-import { Brand } from "../entities/Brand";
 
 export async function getModels(req: Request, res: Response) {
   try {
     const models = await Model.find({
       relations: ["product", "brand"],
+      select: ["model"],
     });
 
     return res.json(models);

@@ -3,6 +3,7 @@ import { AppDataSource } from "./db";
 import { Brand } from "./entities/Brand";
 import { Product } from "./entities/Product";
 import { Request, Response } from "express";
+import { Operation } from "./entities/Operation";
 
 export const initialValues = async (req?: Request, res?: Response) => {
   const models = await Model.find();
@@ -50,6 +51,17 @@ export const initialValues = async (req?: Request, res?: Response) => {
       .insert()
       .into(Model)
       .values(Models)
+      .execute();
+  }
+
+  const operations = await Operation.find();
+  if (operations.length === 0) {
+    const Operations = [{ operation: "Delivery" }, { operation: "Support" }];
+
+    await AppDataSource.createQueryBuilder()
+      .insert()
+      .into(Operation)
+      .values(Operations)
       .execute();
   }
 };

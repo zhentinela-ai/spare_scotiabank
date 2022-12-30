@@ -22,19 +22,18 @@ export class Lot extends BaseEntity {
   lot!: string;
 
   @Column(numberType, { name: "model_id", nullable: false })
-  modelId!: number;
+  model_id!: number;
 
-  @OneToMany(() => Model, (model) => model.lot)
-  models!: Model[];
+  @ManyToOne(() => Model)
+  @JoinColumn({ name: "model_id", referencedColumnName: "id" })
+  model!: Model;
 
   @Column(numberType, { nullable: false })
   stock!: number;
 
-  // @Column(numberType, { name: "operation_id", nullable: false })
-  // operationId!: number;
+  @Column(numberType, { name: "operation_id", nullable: false })
+  operation_id!: number;
 
-  // @ManyToOne(() => Operation, (operation) => operation.lots)
-  // operation!: Operation;
   @ManyToOne(() => Operation)
   @JoinColumn({ name: "operation_id", referencedColumnName: "id" })
   operation!: Operation;
@@ -44,15 +43,9 @@ export class Lot extends BaseEntity {
 
   @CreateDateColumn({
     name: "create_time",
-    nullable: false,
   })
-  crate_time!: Date;
+  create_time?: Date;
 
-  // @Column(numberType, { name: "inventory_id", nullable: false })
-  // inventoryId!: number;
-
-  // @ManyToOne(() => Inventory, (inventory) => inventory.lots)
-  @ManyToOne(() => Inventory)
-  @JoinColumn({ name: "inventory_id", referencedColumnName: "id" })
-  inventory!: Inventory;
+  @OneToMany(() => Inventory, (inventory) => inventory.lots)
+  inventory!: Inventory[];
 }
