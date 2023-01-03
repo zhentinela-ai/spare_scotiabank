@@ -9,13 +9,13 @@ import {
 import { Lot } from "./Lot";
 
 @Entity()
-export class Operation extends BaseEntity {
+export class InternOperation extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column(stringType, { length: 45, nullable: false })
+  @Column(stringType, { nullable: false })
   operation!: string;
 
-  @OneToMany(() => Lot, (lot) => lot.operation)
+  @OneToMany(() => Lot, (lot) => lot.internOperation)
   lots!: Lot[];
 }

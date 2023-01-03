@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import { Operation } from "./entities/Operation";
+import { Scotia } from "./entities/Scotia";
 import { Brand } from "./entities/Brand";
 import { Lot } from "./entities/Lot";
 import { Model } from "./entities/Model";
@@ -7,6 +7,8 @@ import { Product } from "./entities/Product";
 import { Output } from "./entities/Output";
 import { Inventory } from "./entities/Inventory";
 import { Devolution } from "./entities/Devolution";
+import { InternOperation } from "./entities/internOperation";
+import { OperationAssigned } from "./entities/operationAssigned";
 
 dotenv.config();
 
@@ -24,10 +26,12 @@ export const entities = [
   Brand,
   Model,
   Lot,
-  Operation,
+  Scotia,
   Output,
   Inventory,
   Devolution,
+  InternOperation,
+  OperationAssigned
 ];
 
 export const stringType = "varchar";

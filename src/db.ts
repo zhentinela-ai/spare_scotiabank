@@ -19,7 +19,7 @@ const username = user;
 
 export const AppDataSource = new DataSource({
   type: "sqlite",  
-  database: "./src/db/spare.sqlite",
+  database: "./src/db/spare.db",
   entities: entities,
   // logging: true,
   synchronize: true,

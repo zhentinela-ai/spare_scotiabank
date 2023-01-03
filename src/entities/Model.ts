@@ -24,14 +24,22 @@ export class Model extends BaseEntity {
   product_id!: number;
 
   @ManyToOne(() => Product)
-  @JoinColumn({ name: "product_id", referencedColumnName: "id" })
+  @JoinColumn({
+    name: "product_id",
+    referencedColumnName: "id",
+    foreignKeyConstraintName: "product_model",
+  })
   product!: Product;
 
   @Column(numberType, { name: "brand_id", nullable: false })
   brand_id!: number;
 
   @ManyToOne(() => Brand)
-  @JoinColumn({ name: "brand_id", referencedColumnName: "id" })
+  @JoinColumn({
+    name: "brand_id",
+    referencedColumnName: "id",
+    foreignKeyConstraintName: "brand_model",
+  })
   brand!: Brand;
 
   @OneToMany(() => Lot, (lot) => lot.model)

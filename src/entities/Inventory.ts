@@ -3,6 +3,8 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
@@ -15,14 +17,24 @@ export class Inventory extends BaseEntity {
   id!: number;
 
   @Column(numberType, { name: "lot_id" })
-  lotId!: number;
+  lot_id!: number;
 
-  @OneToMany(() => Lot, (lot) => lot.inventory)
-  lots!: Lot[];
+  @ManyToOne(() => Lot)
+  @JoinColumn({
+    name: "lot_id",
+    referencedColumnName: "id",
+    foreignKeyConstraintName: "lot_inventory",
+  })
+  lot!: Lot;
 
   @Column(numberType, { name: "output_id" })
-  outputId!: number;
+  output_id!: number;
 
-  @OneToMany(() => Output, (output) => output.inventory)
-  outputs!: Output[];
+  @ManyToOne(() => Output)
+  @JoinColumn({
+    name: "output_id",
+    referencedColumnName: "id",
+    foreignKeyConstraintName: "output_inventory",
+  })
+  output!: Output;
 }

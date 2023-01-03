@@ -7,17 +7,22 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Operation } from "./Operation";
 import { stringType } from "../config";
+import { Scotia } from "./Scotia";
+import { InternOperation } from "./internOperation";
 
 @Entity()
 export class Devolution extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @ManyToOne(() => Operation)
-  @JoinColumn({ name: "operation_id", referencedColumnName: "id" })
-  operation!: Operation;
+  @ManyToOne(() => InternOperation)
+  @JoinColumn({
+    name: "internOperation_id",
+    referencedColumnName: "id",
+    foreignKeyConstraintName: "internOperation_devolution",
+  })
+  internOperation!: InternOperation;
 
   @Column(stringType, { length: 45, nullable: false })
   serial!: string;
@@ -34,6 +39,6 @@ export class Devolution extends BaseEntity {
   })
   create_time!: Date;
 
-  @Column(stringType, { nullable: false })
+  @Column({ type: "text", nullable: false })
   description!: string;
 }
