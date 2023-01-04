@@ -8,6 +8,7 @@ import { InternOperation } from "./entities/internOperation";
 import { OperationAssigned } from "./entities/operationAssigned";
 
 export const initialValues = async (req?: Request, res?: Response) => {
+  
   const models = await Model.find();
   if (models.length === 0) {
     const Brands = [

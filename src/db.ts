@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
 import env_vars, { entities } from "./config";
-import path from "path";
+import { OutputSubscriber } from "./subscribers/OutputSubscriber";
 
 const { host, password, port, user } = env_vars;
 const username = user;
@@ -23,4 +23,5 @@ export const AppDataSource = new DataSource({
   entities: entities,
   // logging: true,
   synchronize: true,
+  subscribers: [OutputSubscriber]
 });

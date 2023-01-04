@@ -16,7 +16,7 @@ export class Output extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column(stringType, { length: 45, nullable: false })
+  @Column(stringType, { length: 45, nullable: false, unique: true })
   serial!: string;
 
   @Column({
@@ -24,7 +24,7 @@ export class Output extends BaseEntity {
     name: "create_time",
     nullable: false,
   })
-  create_time!: Date;
+  create_time?: Date;
 
   // @Column(stringType, { length: 100, nullable: false })
   // assigned!: string;
@@ -43,6 +43,6 @@ export class Output extends BaseEntity {
   @Column(stringType, { length: 8, nullable: false })
   scotia_id!: string;
 
-  @OneToMany(() => Inventory, inventory => inventory.output)
+  @OneToMany(() => Inventory, (inventory) => inventory.output)
   inventory!: Inventory[];
 }
